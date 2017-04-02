@@ -1,0 +1,2 @@
+在apply里，procedure是直接应用的，这就是意味着，若eval传递给applay的运算符不是actual-value的话，
+apply接收到的将是一个thunk，而直接调用thunk并不能得到值。
