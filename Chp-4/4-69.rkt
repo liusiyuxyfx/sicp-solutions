@@ -1,0 +1,20 @@
+#lang racket
+(rule (grandson ?persong ?persons)
+      (and (son ?personf ?persons)
+           (son ?persong ?personf)))
+(rule (son ?personm ?persons)
+      (and (wife ?personm ?personw)
+           (son ?personw ?persons)))
+(rule (great-grands ?persona)
+      (or (same ?persona (grandson))
+          (and (same ?persona (?personx . ?persony))
+               (great-grand ?persony))))
+
+(rule (last (grandson)))
+(rule (last (great . ?rel))
+      (last ?rel))
+
+(rule ((great . ?rel) ?x ?y)
+      (and (lst ?rel)
+           (son ?a ?y)
+           (?rel ?x ?a)))
