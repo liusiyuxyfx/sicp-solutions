@@ -63,11 +63,8 @@ void Launch( char *path )
 	}
 }
 
-char main()
+int main()
 {
 	Initialize();
-
 	Launch( "rocket.txt" );
-
-	return getchar();
 }
