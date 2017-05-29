@@ -65,6 +65,7 @@ void Launch( char *path )
 
 int main()
 {
+	
 	Initialize();
 	Launch( "rocket.txt" );
 }
