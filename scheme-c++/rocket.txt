@@ -1,0 +1,12 @@
+(define a 2)
+(define b 3)
+(define func
+	(let ((disa (+ a 1))
+              (disb (+ b 1)))
+	(print a)
+        (print b)
+        (set a disa)
+        (set b disb)
+        (print a)
+        (print b)))
+(func)                
