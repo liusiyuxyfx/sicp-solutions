@@ -1,5 +1,0 @@
-(define (pfunc a)
-	(if (< a 3) 
-	    (pfunc (+ a 1))
-	    (print a)))
-(pfunc 1)
