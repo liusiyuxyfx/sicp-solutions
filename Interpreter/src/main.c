@@ -55,14 +55,18 @@ void Launch(  )
 			{
 				if( --depth == 0 )
 				{
-                    for (; flag < 6; ++flag) {
-                        if (Buff[flag] != quit[flag]) {
+
+					Buff[Index] = 0;
+					int cnt = 0;
+					for (; flag < 6; ++flag) {
+						if (Buff[cnt] == ' ')
+							cnt++;
+                        if (Buff[cnt++] != quit[flag]) {
                             break;
                         }
                     }
                     if (flag == 6) break;
                     flag = 0;
-					Buff[Index] = 0;
 					printf("=>");
 					Interpret( Buff );
 					puts("");
