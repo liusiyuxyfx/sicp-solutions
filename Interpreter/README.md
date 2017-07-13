@@ -18,11 +18,11 @@
 * (clock)
 
 ___
+**使用方法**  
 解释器采用repl方式，当用户输入(quit)时，程序停止
 ___
-
-本项目编译配置为`gcc -O2 -std=gnu99`
-
-在windows上，我用Jetbrains Clion完成了程序的编写，推荐使用clion进行编译，其支持CMake，这使得其在linux上可直接用cmake进行编译,并且项目中准备了CMakelist。
-
-我最初在linux上完成了本项目，但是由于后来加入了一系列不同类型的指针以及调用关系，导致其在linux上编译出来后无法正确执行，而只能在windows上执行，目前我正在尽快寻找方法解决这一问题。
+****编译****
+* windows下
+  windows下可使用Jetbrain Clion进行编译  
+* linux和mac下
+  项目中配置了makefile，所以可以直接在项目根目录下执行命令`make`即可。
