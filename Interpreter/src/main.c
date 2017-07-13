@@ -7,6 +7,7 @@
 #include "Evaluator.h"
 #include <string.h>
 #include <stdio.h>
+char quit[10] = "(quit)";
 void Initialize( void )
 {
 	InitAllocator();
@@ -36,16 +37,17 @@ void Initialize( void )
 static char Buff[4096];
 static int Index = 0;
 
-void Launch( char *path )
+void Launch(  )
 {
-	FILE *src = fopen( path, "r" );
-	
-	if( src )
-	{
-		int c, depth = 0;
-		
-		while( ( c = fgetc( src ) ) != EOF )
+	//FILE *src = fopen( path, "r" );
+	int flag = 0;
+
+		int depth = 0;
+        char c;
+
+		while( 1 )
 		{
+            c = getchar();
 			Buff[Index++] = ( c == '\n' || c == '\t' ) ? ' ' : c;
 			
 			if( c == '(' ) depth++;
@@ -53,22 +55,32 @@ void Launch( char *path )
 			{
 				if( --depth == 0 )
 				{
+                    for (; flag < 6; ++flag) {
+                        if (Buff[flag] != quit[flag]) {
+                            break;
+                        }
+                    }
+                    if (flag == 6) break;
+                    flag = 0;
 					Buff[Index] = 0;
+					printf("=>");
 					Interpret( Buff );
+					puts("");
 					Index = 0;
 				}
 			}
 		}
-		fclose( src );
-	}
+		//fclose( src );
+    return;
+
 }
 
 int main();
-char quit[10] = "(quit)";
 char sinput[1000];
 int main() {
 	Initialize();
-    FILE *src = fopen ("rocket.txt", "w");
+    /*FILE *src = fopen ("rocket.txt", "w");
+	puts("please input your scheme program");
     int flag = 0;
     while (gets(sinput)!=EOF) {
         for (; flag < 6; ++flag) {
@@ -82,7 +94,7 @@ int main() {
         fputs("\n",src);
 
     }
-    fclose(src);
-    Launch ("rocket.txt");
+    fclose(src);*/
+    Launch ();
     return getchar();
 }
